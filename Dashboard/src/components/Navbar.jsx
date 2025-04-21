@@ -6,9 +6,9 @@ import Notifications from './Admin-Dashboard/Notifications'
 
 const Navbar = () => {
   return (
-    <div className='h-25 bg-green-300 flex justify-evenly gap-100 items-center rounded-2xl'>
+    <div className='h-20 bg-green-200  flex justify-evenly gap-100 items-center '>
       <div className=''>
-          <Link className="flex gap-4 items-center" to="/">
+          <Link className="flex gap-4 items-center" >
             <img
               src="assets/logo.jpeg"
               className="rounded-full transform hover:scale-110 transition-transform duration-300"

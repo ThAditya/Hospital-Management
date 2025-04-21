@@ -14,37 +14,38 @@ import Chart from "./chart";
 import DoctorDetails from "./DoctorDetails";
 import Medicine from "./Medicine";
 
+
 const Admin_Sidebar = () => {
   return (
     <div className="flex ">
-      <div className=" w-[20%] rounded-2xl bg-green-300 ">
-        <RxHamburgerMenu className="font-bold text-4xl ml-5 h-30" />
-        <ul className="pl-8 gap-10 text-2xl font-bold flex flex-col h-150 w-100">
-          <li className="flex flex-row gap-3 items-center ">
+      <div className=" w-[18%] pt-10 h-screen  bg-green-300 ">
+
+        <ul className="pl-8 gap-10 text-2xl font-bold flex flex-col">
+          <li className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center ">
             {" "}
             <MdDashboardCustomize className="" /> Dashboard
           </li>
-          <li className="flex flex-row gap-3 items-center">
+          <li className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center">
             {" "}
             <MdPeopleAlt /> Staff
           </li>
-          <li className="flex flex-row gap-3 items-center">
+          <li className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center">
             {" "}
             <FaHouseChimneyMedical /> Ward
           </li>
-          <li className="flex flex-row gap-3 items-center">
+          <li className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center">
             {" "}
             <BiSolidInjection /> Treatment
           </li>
-          <li className="flex flex-row gap-3 items-center">
+          <li className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center">
             {" "}
             <FaHospitalUser /> Lab
           </li>
-          <li className="flex flex-row gap-3 items-center">
+          <li className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center">
             {" "}
             <MdLocalPharmacy /> Pharmacy
           </li>
-          <li className="flex flex-row gap-3 items-center">
+          <li className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center">
             {" "}
             <MdPersonalInjury /> Patient
           </li>
@@ -54,6 +55,7 @@ const Admin_Sidebar = () => {
         <Chart/>
         <DoctorDetails/>
         <Medicine/>
+
       </div>
     </div>
   );

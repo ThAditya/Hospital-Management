@@ -14,8 +14,7 @@ import DocDashboard from "./DocDashboard";
 
 const Doctor_Sidebar = () => {
   return (
-    <div>
-      <div>
+    <div className="flex">
         <div className=" w-[18%] pt-10 bg-green-300">
           {/* <RxHamburgerMenu className="font-bold text-4xl ml-5 h-30" /> */}
           <ul className="pl-8 gap-10 text-2xl font-bold flex flex-col h-screen">
@@ -49,7 +48,6 @@ const Doctor_Sidebar = () => {
             </li>
           </ul>
         </div>
-      </div>
       <div className="right w-[85%]" >
         <DocDashboard/>
       </div>

@@ -14,6 +14,7 @@ import logoutController from "./controllers/logoutController";
 
 import editUserController from "./controllers/editUser";
 import deleteUserController from "./controllers/deleteUser";
+import { getDoctors } from "./controllers/doctorController";
 
 // Auth Routes
 
@@ -23,7 +24,9 @@ router.post("/login", loginController);
 router.post("/logout", logoutController);
 router.get("/getcurusr", getCurrentUserController);
 router.post("/getuserinfo", userInfoController);
+router.get("/doctors", getDoctors);
 router.patch("/user/edit", editUserController);
 router.delete("/user/delete", deleteUserController);
+
 
 export default router;

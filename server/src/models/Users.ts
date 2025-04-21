@@ -4,7 +4,7 @@ import mongoose, { Schema, Document } from "mongoose";
 
 // export enum UserType {
 //   Doctor = "doctor",
-//   Patient = "patient",
+//   Patient = "patient", 
 //   Admin = "admin"
 // }
 

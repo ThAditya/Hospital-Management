@@ -13,7 +13,7 @@ const ContactUs = () => {
       image: "assets/bhakti.webp",
       email: "mailto:bhaktisharma100@gmail.com",
       github: "https://github.com/bhaktisharma2004",
-      linkedIn: "https://linkedin.com/in/bhakti",
+      linkedIn: "https://www.linkedin.com/in/bhakti-sharma-34685b246/",
       quote: "Building products that users love"
     },
     {

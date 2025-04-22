@@ -12,7 +12,7 @@ const ContactUs = () => {
       role: "Product Manager",
       image: "assets/bhakti.webp",
       email: "mailto:bhaktisharma100@gmail.com",
-      github: "https://github.com/bhakti",
+      github: "https://github.com/bhaktisharma2004",
       linkedIn: "https://linkedin.com/in/bhakti",
       quote: "Building products that users love"
     },
@@ -50,7 +50,7 @@ const ContactUs = () => {
       id: 5,
       name: "Aditya Vashishth",
       role: "Data Scientist",
-      image: "assets/Aditya.webp",
+      image: "assets/Aditya.png",
       email: "mailto:aditya.vashishth95@gmail.com",
       github: "https://github.com/ThAditya",
       linkedIn: "https://www.linkedin.com/in/aditya-vashishth-9547182a9",

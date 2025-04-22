@@ -9,7 +9,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Register from './components/Register/SignUp/Register';
 import SignIn from './components/Register/LogIn/SignIn';
-import Admin from './components/Register/SignUp/Admin';
+// import Admin from './components/Register/SignUp/Admin';
 import Doctor from './components/Register/SignUp/Doctor';
 import Patient from './components/Register/SignUp/Patient';
 
@@ -32,7 +32,7 @@ const App = () => {
         <Route path='/ContactUs' element={<ContactUs />} />
         <Route path='/Register' element={<Register />} />
         <Route path='/Login' element={<SignIn />} />
-        <Route path='/Register/Admin' element={<Admin />} />
+        {/* <Route path='/Register/Admin' element={<Admin />} /> */}
         <Route path='/Register/Patient' element={<Patient />} />
         <Route path='/Register/Doctor' element={<Doctor />} />
 

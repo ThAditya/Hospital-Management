@@ -9,40 +9,40 @@ import {
 } from "react-icons/md";
 import { FaHouseChimneyMedical, FaHospitalUser } from "react-icons/fa6";
 import { BiSolidInjection } from "react-icons/bi";
+
+
 const Patient_Sidebar = () => {
   return (
     <div>
       <div>
-        <div className=" w-[18%] pt-10 bg-green-300">
-          {/* <RxHamburgerMenu className="font-bold text-4xl ml-5 h-30" /> */}
+        <div className=" pt-10 bg-green-300">
+
           <ul className="pl-8 gap-10 text-2xl font-bold h-screen flex flex-col">
-            <li className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center  ">
-              {" "}
+            <li>
+              <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to="/patient">
               <MdDashboardCustomize className="" /> Dashboard
+              </Link>
             </li>
-            <li className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center ">
-              {" "}
+            <li>
+              <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to="/patient/Staff" >
               <MdPeopleAlt /> Staff
+              </Link>
             </li>
-            <li className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center">
-              {" "}
-              <FaHouseChimneyMedical /> Ward
-            </li>
-            <li className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center">
-              {" "}
+            
+            <li>
+              <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to="/patient/Treatment">
               <BiSolidInjection /> Treatment
+              </Link>
             </li>
-            <li className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center">
-              {" "}
+            <li>
+              <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to="/patient/Lab">
               <FaHospitalUser /> Lab
+              </Link>
             </li>
-            <li className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center">
-              {" "}
+            <li>
+              <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to="/patient/Pharmacy">
               <MdLocalPharmacy /> Pharmacy
-            </li>
-            <li className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center">
-              {" "}
-              <MdPersonalInjury /> Patient
+              </Link>
             </li>
           </ul>
         </div>

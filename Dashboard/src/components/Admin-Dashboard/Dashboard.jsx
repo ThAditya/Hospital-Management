@@ -3,6 +3,8 @@ import { FaUserInjured } from "react-icons/fa";
 import { FaUserDoctor, FaBed } from "react-icons/fa6";
 import { ImLab } from "react-icons/im";
 import Chart from "./chart";
+import DoctorDetails from "./DoctorDetails";
+import Medicine from "./Medicine";
 
 const Dashboard = () => {
   return (
@@ -31,7 +33,9 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="p-5">
-        
+      <Chart/>
+        <DoctorDetails/>
+        <Medicine/>
       </div>
     </div>
     

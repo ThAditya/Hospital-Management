@@ -24,7 +24,7 @@ const LogIn = () => {
 
       // Redirect user based on their role
       if (role === "admin") {
-        window.location.href="http://localhost:5173/";
+        window.location.href="http://localhost:5173/Admin";
       }
        else if (role === "doctor") {
         window.location.href="http://localhost:5173/doctor";

@@ -25,32 +25,32 @@ const Admin_Sidebar = () => {
             </Link>
           </li>
           <li >
-            <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to = "/Admin-Dashboard/staff">
+            <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to = "/Admin/staff">
             <MdPeopleAlt /> Staff
             </Link>
           </li>
           <li >
-            <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to= "/Admin-Dashboard/ward">
+            <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to= "/Admin/Ward">
             <FaHouseChimneyMedical /> Ward
             </Link>
           </li>
           <li >
-            <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to= "/Admin-Dashboard/treatment">
+            <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to= "/Admin/treatment">
             <BiSolidInjection /> Treatment
             </Link>
           </li>
           <li >
-            <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to= "/Admin-Dashboard/lab">
+            <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to= "/Admin/lab">
             <FaHospitalUser /> Lab
             </Link>
           </li>
           <li >
-            <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to= "/Admin-Dashboard/pharmacy">
+            <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to= "/Admin/pharmacy">
             <MdLocalPharmacy /> Pharmacy
             </Link>
           </li>
           <li >
-            <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to= "/Admin-Dashboard/  patientDetails">
+            <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to= "/Admin/patientDetails">
             <MdPersonalInjury /> Patient
             </Link>
           </li>

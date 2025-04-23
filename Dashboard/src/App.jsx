@@ -12,7 +12,7 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<AdminDashboard />} />
+        <Route path="/Admin/*" element={<AdminDashboard />} />
         <Route path="/doctor" element={<Doctor_Sidebar />} />
         <Route path="/patient" element={<Dashboard />} />  {/* updated route */}
       </Routes>

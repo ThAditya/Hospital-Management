@@ -23,7 +23,6 @@ export interface IDoctor extends Document {
   address: string;
 
   role : string;
-
 }
 
 const UserSchema = new Schema<IDoctor>({

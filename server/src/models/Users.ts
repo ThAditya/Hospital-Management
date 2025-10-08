@@ -17,11 +17,8 @@ export interface IPatient extends Document {
   gender: string;
   NIC: string;
   dob: Date;
-
   password: string;
   address: string;
-
-
 }
 
 const UserSchema = new Schema<IPatient>({

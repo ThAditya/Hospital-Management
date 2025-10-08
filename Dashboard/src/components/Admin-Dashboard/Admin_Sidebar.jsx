@@ -1,4 +1,4 @@
-import React from "react";
+  import React from "react";
 import { Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import {
@@ -20,7 +20,7 @@ const Admin_Sidebar = () => {
         <ul className="pl-8 gap-10 text-2xl font-bold flex flex-col">
           <li>
             
-            <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to="/">
+            <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to="/Admin">
             <MdDashboardCustomize className="" /> Dashboard 
             </Link>
           </li>

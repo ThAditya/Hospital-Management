@@ -1,1 +1,6 @@
 @import 'tailwindcss';
+
+/* Let app control scrolling; avoids double scrollbar */
+body {
+  overflow: hidden;
+}

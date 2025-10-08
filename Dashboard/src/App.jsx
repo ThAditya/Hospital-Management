@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
 import AdminDashboard from "./components/Admin-Dashboard/AdminDashboard";
-import Doctor_Sidebar from "./components/Doctor-Dashboard/Doctor_Sidebar";
-import Dashboard from "./components/Patient-Dashboard/Dashboard";  // updated import
+import DoctorDashboard from "./components/Doctor-Dashboard/DoctorDashboard";
+import PatientDashboard from "./components/Patient-Dashboard/PatientDashboard";  // updated import
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 
@@ -13,8 +13,8 @@ function App() {
 
       <Routes>
         <Route path="/Admin/*" element={<AdminDashboard />} />
-        <Route path="/doctor" element={<Doctor_Sidebar />} />
-        <Route path="/patient" element={<Dashboard />} />  {/* updated route */}
+        <Route path="/doctor/*" element={<DoctorDashboard />} />
+        <Route path="/patient/*" element={<PatientDashboard />} />  {/* updated route */}
       </Routes>
     </>
   );

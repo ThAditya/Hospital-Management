@@ -7,7 +7,7 @@ import { SECRET_KEY } from './jsonWebToken-Config';
 
 const patientSignupController = async (req : Request, res: Response, next: NextFunction ) => {
   try{
-    const{ firstName, lastName, email, mobNumber, NIC, DOB, gender, password, address } = req.body;
+    const{ firstName, lastName, email, mobNumber, NIC, dob, gender, password, address } = req.body;
 
     const existingUser = await User.findOne({email});
     if(existingUser){
@@ -17,7 +17,7 @@ const patientSignupController = async (req : Request, res: Response, next: NextF
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const newUser:IPatient = new User({firstName, lastName, email, mobNumber, NIC, DOB, gender, address,  password: hashedPassword});
+    const newUser:IPatient = new User({firstName, lastName, email, mobNumber: parseInt(mobNumber), NIC, dob: new Date(dob), gender, address,  password: hashedPassword});
     await newUser.save();
     console.log(newUser)
 

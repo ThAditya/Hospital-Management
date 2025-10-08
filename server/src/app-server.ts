@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 import router from "./app-router";
 import { clientPort, serverPort } from "./serversettings";
 import dotenv from "dotenv";
+import treatmentRouter from "./controllers/treatmentController";
 
 dotenv.config(); // Load environment variables
 
@@ -21,7 +22,7 @@ if (!mongoDBurl) {
 const app = express();
 
 app.use(cors({ 
-  origin: ['http://localhost:5000', 'http://localhost:5173'], // Your frontend origin
+  origin: ['http://localhost:5000', 'http://localhost:5173', 'http://localhost:5174'], // Added Dashboard port
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -32,6 +33,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "static")));
 app.use(router);
 app.use(express.json()); // <---- This is required
+app.use("/treatments", treatmentRouter);
 
 // MongoDB Atlas connection
 mongoose
@@ -45,6 +47,8 @@ mongoose
     console.error("❌ Error connecting to MongoDB Atlas:", error);
     process.exit(1); // Exit if connection fails
   });
+
+
 
 app.listen(serverPort, () => {
   console.log(

@@ -15,6 +15,10 @@ import Patient from './components/Register/SignUp/Patient';
 
 import LogIn from './components/Register/LogIn/LogIn';
 
+// import PrivateRoute from './components/PrivateRoute';
+// import PatientDashboard from './components/Patient-Dashboard/PatientDashboard';
+// import DoctorDashboard from './components/Doctor-Dashboard/DoctorDashboard';
+
 const App = () => {
   const location = useLocation();
 
@@ -35,6 +39,17 @@ const App = () => {
 
         <Route path='/Register/Patient' element={<Patient />} />
         <Route path='/Register/Doctor' element={<Doctor />} />
+
+        {/* <Route path='/patient/*' element={
+          <PrivateRoute>
+            <PatientDashboard />
+          </PrivateRoute>
+        } />
+        <Route path='/doctor/*' element={
+          <PrivateRoute>
+            <DoctorDashboard />
+          </PrivateRoute>
+        } /> */}
 
       </Routes>
       {shouldShowFooter && <Footer />}

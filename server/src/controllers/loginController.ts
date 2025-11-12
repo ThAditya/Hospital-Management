@@ -7,44 +7,34 @@ import Admin from "../models/Admin"
 import { SECRET_KEY } from "./jsonWebToken-Config";
 
 const loginController = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-
-
   try {
     const { email, password } = req.body;
-    
-    const admin = await Admin.findOne({email});
-    
-    if(admin && await bcrypt.compare(password,admin.password)){
-      res.status(200).json({message: "Login successful for admin", role : "admin"});
-      return;
-    }
-    // Find the Doctor in the database
 
-    const doctor = await Doctor.findOne({email});
+    // Combine user finding logic to be more efficient
+    let user: any = await Admin.findOne({ email });
+    let role = 'admin';
 
-    if(doctor && await bcrypt.compare(password,doctor.password)){
-      res.status(200).json({message: "Login successful for doctor" , role :"doctor"});
-      return ;
+    if (!user) {
+      user = await Doctor.findOne({ email });
+      role = 'doctor';
     }
 
-    // Find the user in the database
-    const user = await User.findOne({ email });
-
-    if(user && await bcrypt.compare(password, user.password)){
-      res.status(200).json({message: "Login successful for patient" , role :"patient"});
-      return;
+    if (!user) {
+      user = await User.findOne({ email });
+      role = 'patient';
     }
 
-    if (!user || !doctor || !admin) {
-      res.status(401).json({ message: "Invalid email or password" });
+    // Now check password
+    if (user && await bcrypt.compare(password, user.password)) {
+      // Generate a JWT token
+      const payload = { id: user._id, email: user.email, role: role };
+      const token = jwt.sign(payload, SECRET_KEY, { expiresIn: '1d' });
+      res.status(200).json({ message: `Login successful for ${role}`, role, token });
       return;
     }
 
-
-    // Generate a JWT token
-    const token = jwt.sign({ email }, SECRET_KEY);
-
-    res.status(200).json({ token });
+    // If no user found or password doesn't match
+    res.status(401).json({ message: "Invalid email or password" });
   } catch (error) {
     next(error); // Pass the error to the global error handler
   }

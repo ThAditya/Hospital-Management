@@ -7,7 +7,7 @@ import {
   MdLocalPharmacy,
   MdPersonalInjury,
 } from "react-icons/md";
-import { FaHouseChimneyMedical, FaHospitalUser } from "react-icons/fa6";
+import { FaHouseChimneyMedical, FaHospitalUser, FaCalendarCheck } from "react-icons/fa6";
 import { BiSolidInjection } from "react-icons/bi";
 
 
@@ -40,6 +40,11 @@ const Patient_Sidebar = () => {
           <li>
             <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to="/patient/Pharmacy">
               <MdLocalPharmacy /> Pharmacy
+            </Link>
+          </li>
+          <li>
+            <Link className="flex flex-row gap-3 hover:border-t-2 hover:border-b-2 hover:border-blue-400 cursor-pointer items-center" to="/patient/Bookings">
+              <FaCalendarCheck /> Bookings
             </Link>
           </li>
         </ul>

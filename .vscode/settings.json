@@ -6,5 +6,7 @@
         "Pratiksha",
         "Radhika"
     ],
-    "CodeGPT.apiKey": "Anthropic"
+    "CodeGPT.apiKey": "Anthropic",
+    "editor.suggest.showStatusBar": true,
+    "telemetry.editStats.showStatusBar": false
 }

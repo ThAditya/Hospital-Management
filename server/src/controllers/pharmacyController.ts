@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import Pharmacy from "../models/Pharmacy";
+import { createNotificationForAdmins } from "./notificationController";
 
 // Create new medicine
 export const createMedicine = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
@@ -35,6 +36,16 @@ export const createMedicine = async (req: Request, res: Response, next: NextFunc
     });
 
     await newMedicine.save();
+
+    // Check if stock is low
+    if (newMedicine.stockQuantity < 10) {
+      await createNotificationForAdmins(
+        'medicine_low_stock',
+        `Low stock alert: ${medicineName} has only ${stockQuantity} units left.`,
+        newMedicine.id
+      );
+    }
+
     res.status(201).json({ message: "Medicine created successfully", medicine: newMedicine });
   } catch (error) {
     next(error);

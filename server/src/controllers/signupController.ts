@@ -7,7 +7,7 @@ import { SECRET_KEY } from "./jsonWebToken-Config";
 const signupController = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
 
-    const { firstName, lastName, email, mobNumber, NIC, dob, gender, specialty, experience, password, address } = req.body;
+    const { firstName, lastName, email, mobNumber, nic: NIC, DOB: dob, gender, specialty, experience, password, address } = req.body;
 
 
     // Check if the user already exists

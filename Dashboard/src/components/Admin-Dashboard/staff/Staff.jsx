@@ -29,7 +29,16 @@ const Staff = () => {
   const fetchStaff = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:4200/staff');
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      const response = await axios.get('http://localhost:4200/staff', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       setStaffList(response.data);
     } catch {
       toast.error('Failed to fetch staff list');
@@ -46,11 +55,24 @@ const Staff = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
       if (editingId) {
-        await axios.patch(`http://localhost:4200/staff/${editingId}`, formData);
+        await axios.patch(`http://localhost:4200/staff/${editingId}`, formData, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         toast.success('Staff updated successfully');
       } else {
-        await axios.post('http://localhost:4200/staff', formData);
+        await axios.post('http://localhost:4200/staff', formData, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         toast.success('Staff added successfully');
       }
       setFormData({
@@ -83,7 +105,16 @@ const Staff = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this staff member?')) return;
     try {
-      await axios.delete(`http://localhost:4200/staff/${id}`);
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      await axios.delete(`http://localhost:4200/staff/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       toast.success('Staff deleted successfully');
       fetchStaff();
     } catch {

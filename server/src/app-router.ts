@@ -1,6 +1,8 @@
 import express from "express";
 const router = express.Router();
 
+// API Routes
+
 import signupController from "./controllers/signupController";
 import patientSignupController from "./controllers/patientSignupController";
 
@@ -20,6 +22,7 @@ import {
   createAppointment,
   getAllAppointments,
   getPatientAppointments,
+  getMyAppointments,
   getDoctorAppointments,
   updateAppointmentStatus,
   assignDoctorToAppointment,
@@ -35,6 +38,9 @@ import {
   deleteTreatment
 } from "./controllers/treatmentController";
 
+import notificationController from "./controllers/notificationController";
+import profileController from "./controllers/profileController";
+
 import {
   createStaff,
   getAllStaff,
@@ -46,6 +52,7 @@ import {
 // Auth Routes
 
 router.post("/signup", signupController);
+// cspell:disable-next-line
 router.post("/patientsignup", patientSignupController);
 router.post("/login", loginController);
 router.post("/logout", logoutController);
@@ -61,7 +68,9 @@ router.delete("/user/delete", deleteUserController);
 router.post("/appointments", createAppointment);
 router.get("/appointments", getAllAppointments);
 router.get("/appointments/patient/:patientId", getPatientAppointments);
+router.get("/appointments/my", getMyAppointments);
 router.get("/appointments/doctor/:doctorId", getDoctorAppointments);
+router.get("/doctor-appointments/:doctorId", getDoctorAppointments);
 router.patch("/appointments/:id/status", updateAppointmentStatus);
 router.patch("/appointments/:id/assign-doctor", assignDoctorToAppointment);
 router.delete("/appointments/:id", deleteAppointment);
@@ -92,11 +101,11 @@ import {
   deleteMedicine
 } from "./controllers/pharmacyController";
 
-router.post("/lab", createLabTest);
-router.get("/lab", getAllLabTests);
-router.get("/lab/:id", getLabTestById);
-router.patch("/lab/:id", updateLabTest);
-router.delete("/lab/:id", deleteLabTest);
+router.post("/labs", createLabTest);
+router.get("/labs", getAllLabTests);
+router.get("/labs/:id", getLabTestById);
+router.patch("/labs/:id", updateLabTest);
+router.delete("/labs/:id", deleteLabTest);
 
 // Pharmacy Routes
 
@@ -116,11 +125,11 @@ import {
   deleteWard
 } from "./controllers/wardController";
 
-router.post("/ward", createWard);
-router.get("/ward", getAllWards);
-router.get("/ward/:id", getWardById);
-router.patch("/ward/:id", updateWard);
-router.delete("/ward/:id", deleteWard);
+router.post("/wards", createWard);
+router.get("/wards", getAllWards);
+router.get("/wards/:id", getWardById);
+router.patch("/wards/:id", updateWard);
+router.delete("/wards/:id", deleteWard);
 
 // Treatment Routes
 
@@ -130,5 +139,12 @@ router.get("/treatments/patient/:patientId", getPatientTreatments);
 router.get("/treatments/doctor/:doctorId", getDoctorTreatments);
 router.patch("/treatments/:id", updateTreatment);
 router.delete("/treatments/:id", deleteTreatment);
+
+// Notification Routes
+
+router.use("/notifications", notificationController);
+
+// Profile Route
+router.get("/user/profile", profileController);
 
 export default router;

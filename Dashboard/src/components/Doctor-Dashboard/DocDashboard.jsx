@@ -19,12 +19,18 @@ const DocDashboard = () => {
 
   const fetchStats = async () => {
     try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
       // Replace with actual API endpoints for doctor dashboard stats
+      // TODO: You'll need to get the logged-in doctor's ID to fetch specific data.
       const [patientsRes, wardsRes, labsRes, appointmentsRes] = await Promise.all([
-        axios.get("http://localhost:4200/patients"),
-        axios.get("http://localhost:4200/wards"),
-        axios.get("http://localhost:4200/labs"),
-        axios.get("http://localhost:4200/appointments"),
+        axios.get("http://localhost:4200/api/patients", { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get("http://localhost:4200/api/wards", { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get("http://localhost:4200/api/labs", { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get("http://localhost:4200/api/appointments", { headers: { Authorization: `Bearer ${token}` } }), // This gets all appointments, consider fetching only for the current doctor
       ]);
 
       setStats({

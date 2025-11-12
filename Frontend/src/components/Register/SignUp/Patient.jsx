@@ -81,7 +81,7 @@ const Patient = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:4200/patientsignup",
+        "http://localhost:4200/api/patientsignup",
         formData,
         {
           headers: {
@@ -112,7 +112,7 @@ const Patient = () => {
       if (error.response) {
         alert(error.response.data.message || "Registration failed");
       } else if (error.request) {
-        alert("Nor response was recieved");
+        alert("No response was received.");
       } else {
         alert("Request error: " + error.message);
       }
@@ -142,7 +142,7 @@ const Patient = () => {
 
           {registrationSuccess && (
             <div className="mb-4 p-4 bg-green-100 text-green-700 rounded-lg">
-              Registration successful! Doctor account has been created.
+              Registration successful! Your patient account has been created.
             </div>
           )}
 
@@ -312,9 +312,8 @@ const Patient = () => {
                 <div className="relative w-full md:col-span-2">
                   <FaMapMarker className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500" />
                   <input
-                    className={`border-2 ${
-                      errors.email ? "border-red-500" : "border-blue-200"
-                    } rounded-lg p-3 pl-10 w-full focus:border-blue-500 focus:outline-none`}
+                    className={`border-2 ${errors.address ? "border-red-500" : "border-blue-200"
+                      } rounded-lg p-3 pl-10 w-full focus:border-blue-500 focus:outline-none`}
                     type="text"
                     name="address"
                     value={formData.address}

@@ -28,7 +28,16 @@ const Pharmacy = () => {
   const fetchMedicines = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:4200/pharmacy');
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      const response = await axios.get('http://localhost:4200/pharmacy', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       setMedicines(response.data);
     } catch {
       toast.error('Failed to fetch medicines');
@@ -48,11 +57,24 @@ const Pharmacy = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
       if (editingId) {
-        await axios.patch(`http://localhost:4200/pharmacy/${editingId}`, formData);
+        await axios.patch(`http://localhost:4200/pharmacy/${editingId}`, formData, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         toast.success('Medicine updated successfully');
       } else {
-        await axios.post('http://localhost:4200/pharmacy', formData);
+        await axios.post('http://localhost:4200/pharmacy', formData, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         toast.success('Medicine added successfully');
       }
       setFormData({
@@ -84,7 +106,16 @@ const Pharmacy = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this medicine?')) return;
     try {
-      await axios.delete(`http://localhost:4200/pharmacy/${id}`);
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      await axios.delete(`http://localhost:4200/pharmacy/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       toast.success('Medicine deleted successfully');
       fetchMedicines();
     } catch {

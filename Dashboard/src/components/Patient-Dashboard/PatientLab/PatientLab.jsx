@@ -16,7 +16,16 @@ const PatientLab = () => {
   const fetchLabTests = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:4200/lab");
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      const response = await axios.get("http://localhost:4200/labs", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       setLabTests(response.data);
       setFilteredTests(response.data);
     } catch {

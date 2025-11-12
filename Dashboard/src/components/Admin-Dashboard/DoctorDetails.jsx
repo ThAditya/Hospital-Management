@@ -8,9 +8,15 @@ const DoctorDetails = () => {
 
   const fetchData = async () => {
     try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
       const response = await axios.get('http://localhost:4200/doctors', {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
         }
       });
       setDoctors(response.data); // axios puts the response data in .data property

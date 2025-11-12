@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import AdminProfile from './Admin-Dashboard/AdminProfile'
 import Notifications from './Admin-Dashboard/Notifications'
-
+import ProfileDropdown from './ProfileDropdown'
 
 const Navbar = () => {
   return (
@@ -26,7 +25,7 @@ const Navbar = () => {
           <Notifications/>
         </div>
         <div className="profile">
-          <AdminProfile/>
+          <ProfileDropdown />
         </div>
         </div>
 

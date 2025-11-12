@@ -13,7 +13,16 @@ const PatientStaff = () => {
   const fetchStaff = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:4200/staff");
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      const response = await axios.get("http://localhost:4200/staff", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       setStaffList(response.data);
     } catch {
       toast.error("Failed to fetch staff list");

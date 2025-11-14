@@ -45,7 +45,7 @@ const Details = ({ heading }) => {
 
   const fetchDoctors = async () => {
     try {
-      const response = await axios.get('http://localhost:4200/doctors');
+      const response = await axios.get('http://localhost:4200/api/doctors');
       setDoctors(response.data);
     } catch (error) {
       console.error('Error fetching doctors:', error);
@@ -79,7 +79,7 @@ const Details = ({ heading }) => {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:4200/appointments', formData);
+      await axios.post('http://localhost:4200/api/appointments', formData);
       toast.success('Appointment booked successfully!');
       // Reset form
       setFormData({

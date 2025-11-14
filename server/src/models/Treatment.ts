@@ -21,7 +21,7 @@ export interface ITreatment extends Document {
 const TreatmentSchema: Schema = new Schema({
   patientId: {
     type: Schema.Types.ObjectId,
-    ref: 'Users',
+    ref: 'Patient',
     required: true
   },
   doctorId: {

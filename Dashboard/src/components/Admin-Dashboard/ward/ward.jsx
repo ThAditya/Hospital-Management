@@ -23,7 +23,16 @@ const Ward = () => {
   const fetchWards = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:4200/ward');
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      const response = await axios.get('http://localhost:4200/wards', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       setWards(response.data);
     } catch {
       toast.error('Failed to fetch wards');
@@ -43,11 +52,24 @@ const Ward = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
       if (editingId) {
-        await axios.patch(`http://localhost:4200/ward/${editingId}`, formData);
+        await axios.patch(`http://localhost:4200/wards/${editingId}`, formData, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         toast.success('Ward updated successfully');
       } else {
-        await axios.post('http://localhost:4200/ward', formData);
+        await axios.post('http://localhost:4200/wards', formData, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         toast.success('Ward added successfully');
       }
       setFormData({
@@ -74,7 +96,16 @@ const Ward = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this ward?')) return;
     try {
-      await axios.delete(`http://localhost:4200/ward/${id}`);
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      await axios.delete(`http://localhost:4200/wards/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       toast.success('Ward deleted successfully');
       fetchWards();
     } catch {

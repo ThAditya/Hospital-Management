@@ -19,7 +19,7 @@ const AdminDashboard = () => {
         <Routes>
           {/* Default Dashboard route */}
           <Route index element={<Dashboard />} />
-          <Route path="/admin" element={<Dashboard />} />
+          <Route path="admin" element={<Dashboard />} />
 
           {/* Relative child routes */}
           <Route path="staff" element={<Staff />} />

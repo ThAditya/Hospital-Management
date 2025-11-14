@@ -7,7 +7,7 @@ import { SECRET_KEY } from './jsonWebToken-Config';
 
 const patientSignupController = async (req : Request, res: Response, next: NextFunction ) => {
   try{
-    const{ firstName, lastName, email, mobNumber, NIC, dob, gender, password, address } = req.body;
+    const{ firstName, lastName, email, mobNumber, nic: NIC, DOB: dob, gender, password, address } = req.body;
 
     const existingUser = await User.findOne({email});
     if(existingUser){
@@ -31,4 +31,4 @@ const patientSignupController = async (req : Request, res: Response, next: NextF
   }
 }
 
-export default patientSignupController
+export default patientSignupController;

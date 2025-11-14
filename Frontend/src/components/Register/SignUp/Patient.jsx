@@ -147,8 +147,8 @@ const Patient = () => {
           )}
 
           <form onSubmit={handleSubmit}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <div className="Name relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="Name relative bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
                 <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500" />
                 <input
                   type="text"
@@ -157,7 +157,7 @@ const Patient = () => {
                   onChange={handleChange}
                   className={`border-2 ${
                     errors.firstName ? "border-red-500" : "border-blue-200"
-                  } rounded-lg p-3 pl-10 w-full focus:border-blue-500 focus:outline-none`}
+                  } rounded-lg p-4 pl-10 w-full focus:border-blue-500 focus:outline-none transition-all duration-300`}
                   placeholder="First Name"
                 />
                 {errors.firstName && (
@@ -166,7 +166,7 @@ const Patient = () => {
                   </span>
                 )}
               </div>
-              <div className="Name relative">
+              <div className="Name relative bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
                 <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500" />
                 <input
                   type="text"
@@ -175,7 +175,7 @@ const Patient = () => {
                   onChange={handleChange}
                   className={`border-2 ${
                     errors.lastName ? "border-red-500" : "border-blue-200"
-                  } rounded-lg p-3 pl-10 w-full focus:border-blue-500 focus:outline-none`}
+                  } rounded-lg p-4 pl-10 w-full focus:border-blue-500 focus:outline-none transition-all duration-300`}
                   placeholder="Last Name"
                 />
                 {errors.lastName && (
@@ -185,7 +185,7 @@ const Patient = () => {
                 )}
               </div>
 
-              <div className="details relative">
+              <div className="details relative bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
                 <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500" />
                 <input
                   type="email"
@@ -194,14 +194,14 @@ const Patient = () => {
                   onChange={handleChange}
                   className={`border-2 ${
                     errors.email ? "border-red-500" : "border-blue-200"
-                  } rounded-lg p-3 pl-10 w-full focus:border-blue-500 focus:outline-none`}
+                  } rounded-lg p-4 pl-10 w-full focus:border-blue-500 focus:outline-none transition-all duration-300`}
                   placeholder="Email"
                 />
                 {errors.email && (
                   <span className="text-red-500 text-sm">{errors.email}</span>
                 )}
               </div>
-              <div className="details relative">
+              <div className="details relative bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
                 <FaPhone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500" />
                 <input
                   type="tel"
@@ -210,7 +210,7 @@ const Patient = () => {
                   onChange={handleChange}
                   className={`border-2 ${
                     errors.mobNumber ? "border-red-500" : "border-blue-200"
-                  } rounded-lg p-3 pl-10 w-full focus:border-blue-500 focus:outline-none`}
+                  } rounded-lg p-4 pl-10 w-full focus:border-blue-500 focus:outline-none transition-all duration-300`}
                   placeholder="Mobile Number"
                 />
                 {errors.mobNumber && (
@@ -220,7 +220,7 @@ const Patient = () => {
                 )}
               </div>
 
-              <div className="NIC relative">
+              <div className="NIC relative bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
                 <FaIdCard className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500" />
                 <input
                   type="text"
@@ -229,7 +229,7 @@ const Patient = () => {
                   onChange={handleChange}
                   className={`border-2 ${
                     errors.nic ? "border-red-500" : "border-blue-200"
-                  } rounded-lg p-3 pl-10 w-full focus:border-blue-500 focus:outline-none`}
+                  } rounded-lg p-4 pl-10 w-full focus:border-blue-500 focus:outline-none transition-all duration-300`}
                   placeholder="NIC"
                 />
                 {errors.nic && (
@@ -238,12 +238,12 @@ const Patient = () => {
               </div>
 
               {/* Date of Birth */}
-              <div className="relative">
+              <div className="relative bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
                 <FaCalendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500" />
                 <input
                   className={`border-2 ${
                     errors.DOB ? "border-red-500" : "border-blue-200"
-                  } text-gray-500 rounded-lg p-3 pl-10 w-full appearance-none focus:border-blue-500 focus:outline-none`}
+                  } text-gray-500 rounded-lg p-4 pl-10 w-full appearance-none focus:border-blue-500 focus:outline-none transition-all duration-300`}
                   type="date"
                   name="DOB"
                   value={formData.DOB}
@@ -260,7 +260,7 @@ const Patient = () => {
                 )}
               </div>
 
-              <div className="password relative">
+              <div className="password relative bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
                 <FaVenusMars className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500" />
                 <select
                   name="gender"
@@ -268,7 +268,7 @@ const Patient = () => {
                   onChange={handleChange}
                   className={`border-2 ${
                     errors.gender ? "border-red-500" : "border-blue-200"
-                  } rounded-lg p-3 pl-10 w-full focus:border-blue-500 focus:outline-none`}
+                  } rounded-lg p-4 pl-10 w-full focus:border-blue-500 focus:outline-none transition-all duration-300`}
                 >
                   <option value="" disabled>
                     Gender
@@ -282,7 +282,7 @@ const Patient = () => {
                 )}
               </div>
 
-              <div className="password relative">
+              <div className="password relative bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
                 <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500" />
                 <input
                   type="password"
@@ -291,7 +291,7 @@ const Patient = () => {
                   onChange={handleChange}
                   className={`border-2 ${
                     errors.password ? "border-red-500" : "border-blue-200"
-                  } rounded-lg p-3 pl-10 w-full focus:border-blue-500 focus:outline-none`}
+                  } rounded-lg p-4 pl-10 w-full focus:border-blue-500 focus:outline-none transition-all duration-300`}
                   placeholder="Password"
                 />
                 {errors.password && (
@@ -309,12 +309,12 @@ const Patient = () => {
               />
               */}
 
-                <div className="relative w-full md:col-span-2">
+                <div className="relative w-full md:col-span-2 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105">
                   <FaMapMarker className="absolute left-3 top-1/2 transform -translate-y-1/2 text-blue-500" />
                   <input
                     className={`border-2 ${
-                      errors.email ? "border-red-500" : "border-blue-200"
-                    } rounded-lg p-3 pl-10 w-full focus:border-blue-500 focus:outline-none`}
+                      errors.address ? "border-red-500" : "border-blue-200"
+                    } rounded-lg p-4 pl-10 w-full focus:border-blue-500 focus:outline-none transition-all duration-300`}
                     type="text"
                     name="address"
                     value={formData.address}
@@ -324,7 +324,7 @@ const Patient = () => {
                   {errors.address && (
                     <span className="text-red-500 text-sm">{errors.address}</span>)}
                 </div>
-            </div>  
+            </div>
             <div className="message items-center flex flex-col mt-6">
                 <button
                   type="submit"

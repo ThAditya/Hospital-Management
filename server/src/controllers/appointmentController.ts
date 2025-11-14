@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import Appointment from "../models/Appointment";
 import jwt from "jsonwebtoken";
+import { SECRET_KEY } from "./jsonWebToken-Config";
 
 // Create a new appointment (patient booking)
 export const createAppointment = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
@@ -20,17 +21,16 @@ export const createAppointment = async (req: Request, res: Response, next: NextF
       notes
     } = req.body;
 
-    // For now, we'll set patientId from token if authenticated, else null
+    // For now, we'll allow booking without authentication for public access
     // In a full implementation, this should be from JWT token
-    const token = req.headers.authorization?.split(' ')[1];
     let patientId = null;
-
+    const token = req.headers.authorization?.split(' ')[1];
     if (token) {
       try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key') as any;
+        const decoded = jwt.verify(token, SECRET_KEY) as any;
         patientId = decoded.id;
       } catch (error) {
-        // Token invalid, but allow booking without login for now
+        // Token invalid, but allow booking without authentication
       }
     }
 
@@ -75,6 +75,33 @@ export const getAllAppointments = async (req: Request, res: Response, next: Next
 export const getPatientAppointments = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const { patientId } = req.params;
+    const appointments = await Appointment.find({ patientId })
+      .populate('doctorId', 'firstName lastName specialty')
+      .sort({ appointmentDate: -1 });
+    res.status(200).json(appointments);
+  } catch (error) {
+    next(error);
+  }
+};
+
+// Get appointments for the authenticated patient
+export const getMyAppointments = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const token = req.headers.authorization?.split(' ')[1];
+    if (!token) {
+      res.status(401).json({ message: "Authentication required" });
+      return;
+    }
+
+    let patientId = null;
+    try {
+      const decoded = jwt.verify(token, SECRET_KEY) as any;
+      patientId = decoded.id;
+    } catch (error) {
+      res.status(401).json({ message: "Invalid token" });
+      return;
+    }
+
     const appointments = await Appointment.find({ patientId })
       .populate('doctorId', 'firstName lastName specialty')
       .sort({ appointmentDate: -1 });

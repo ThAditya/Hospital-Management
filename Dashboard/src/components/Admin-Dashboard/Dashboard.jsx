@@ -13,7 +13,7 @@ const Dashboard = () => {
   const [stats, setStats] = useState({
     patients: 0,
     doctors: 0,
-    appointments: 0,
+    totalAppointments: 0,
     pendingAppointments: 0
   });
   const [loading, setLoading] = useState(true);
@@ -23,29 +23,28 @@ const Dashboard = () => {
   }, []);
 
   const fetchStats = async () => {
+    setLoading(true);
     try {
-      const [doctorsRes, appointmentsRes] = await Promise.all([
-        axios.get("http://localhost:4200/doctors"),
-        axios.get("http://localhost:4200/appointments")
-      ]);
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
 
-      const doctors = doctorsRes.data;
-      const appointments = appointmentsRes.data;
-      const pendingAppointments = appointments.filter(app => app.status === 'pending').length;
-
-      setStats({
-        patients: appointments.length, // For now, count unique patients from appointments
-        doctors: doctors.length,
-        appointments: appointments.length,
-        pendingAppointments
+      const response = await axios.get("http://localhost:4200/api/dashboard-stats", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       });
+
+      const { totalPatients, totalDoctors, totalAppointments, pendingAppointments } = response.data;
+      setStats({ patients: totalPatients, doctors: totalDoctors, totalAppointments, pendingAppointments });
     } catch (error) {
       console.error("Error fetching stats:", error);
       // Fallback to zero values
       setStats({
         patients: 0,
         doctors: 0,
-        appointments: 0,
+        totalAppointments: 0,
         pendingAppointments: 0
       });
     } finally {
@@ -80,7 +79,7 @@ const Dashboard = () => {
         <div className="flex flex-col justify-center items-center bg-gradient-to-br from-blue-500 to-blue-600 p-6 shadow-lg rounded-2xl hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer text-white">
           <FaBed className="text-5xl mb-3 opacity-90" />
           <h1 className="text-lg font-semibold mb-1">Total Appointments</h1>
-          <p className="text-3xl font-bold">{stats.appointments}</p>
+          <p className="text-3xl font-bold">{stats.totalAppointments}</p>
         </div>
         <div className="flex flex-col justify-center items-center bg-gradient-to-br from-red-500 to-red-600 p-6 shadow-lg rounded-2xl hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer text-white">
           <ImLab className="text-5xl mb-3 opacity-90" />

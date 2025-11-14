@@ -9,9 +9,10 @@ const LogIn = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    console.log("Login attempt started");
 
     try {
-      const response = await axios.post("http://localhost:4200/login", {
+      const response = await axios.post("http://localhost:4200/api/login", {
         email,
         password
       });
@@ -21,17 +22,20 @@ const LogIn = () => {
       // Store token and role for later use
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
+      console.log("Token:", token);
 
-      // Redirect user based on their role
+      // Redirect user based on their role with token and role in URL
+      const encodedToken = encodeURIComponent(token);
+      const encodedRole = encodeURIComponent(role);
       if (role === "admin") {
-        window.location.href="http://localhost:5173/Admin";
+        window.location.href=`http://localhost:5173/Admin?token=${encodedToken}&role=${encodedRole}`;
       }
        else if (role === "doctor") {
-        window.location.href="http://localhost:5173/doctor";
+        window.location.href=`http://localhost:5173/doctor?token=${encodedToken}&role=${encodedRole}`;
       }
        else if (role === "patient") {
-        window.location.href="http://localhost:5173/patient";
-      } 
+        window.location.href=`http://localhost:5173/patient?token=${encodedToken}&role=${encodedRole}`;
+      }
       else {
         alert("Unknown role, access denied.");
       }
@@ -49,15 +53,15 @@ const LogIn = () => {
         alt="Background"
       />
       <div className="flex flex-col items-center relative z-10 justify-center min-h-screen">
-        <div className="z-10 bg-white p-8 w-100 rounded-lg shadow-md">
-          <h1 className="text-2xl flex flex-col items-center font-bold mb-4">Login</h1>
+        <div className="z-10 bg-white bg-opacity-90 rounded-lg shadow-2xl p-6 w-full max-w-md transform transition-all duration-500 hover:shadow-3xl">
+          <h1 className="font-bold text-4xl text-blue-900 mb-8 text-center">Login</h1>
           <form onSubmit={handleLogin}>
-            <div className="mb-4">
+            <div className="mb-6">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
                 Email
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="border-2 border-blue-200 rounded-lg p-4 w-full focus:border-blue-500 focus:outline-none transition-all duration-300"
                 id="email"
                 type="email"
                 value={email}
@@ -71,7 +75,7 @@ const LogIn = () => {
                 Password
               </label>
               <input
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                className="border-2 border-blue-200 rounded-lg p-4 w-full focus:border-blue-500 focus:outline-none transition-all duration-300"
                 id="password"
                 type="password"
                 value={password}
@@ -82,7 +86,7 @@ const LogIn = () => {
             </div>
             <div className="flex items-center justify-center">
               <button
-                className="bg-blue-500 hover:bg-blue-700 cursor-pointer text-white font-bold py-2 px-8 rounded focus:outline-none focus:shadow-outline"
+                className="p-3 w-55 text-center font-bold bg-blue-600 text-white rounded-lg mt-6 hover:bg-blue-700 transition duration-300 transform hover:scale-105"
                 type="submit"
               >
                 Log In

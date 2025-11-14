@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import Ward from "../models/Ward";
+import { createNotificationForAdmins } from "./notificationController";
 
 // Create new ward
 export const createWard = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
@@ -17,6 +18,16 @@ export const createWard = async (req: Request, res: Response, next: NextFunction
     });
 
     await newWard.save();
+
+    // Check if available beds are low
+    if (newWard.availableBeds < 5) {
+      await createNotificationForAdmins(
+        'ward_issue',
+        `Ward alert: ${wardName} has only ${availableBeds} available beds.`,
+        newWard.id
+      );
+    }
+
     res.status(201).json({ message: "Ward created successfully", ward: newWard });
   } catch (error) {
     next(error);

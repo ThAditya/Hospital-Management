@@ -12,7 +12,16 @@ const Appointments = () => {
 
   const fetchAppointments = async () => {
     try {
-      const response = await axios.get("http://localhost:4200/appointments");
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      const response = await axios.get("http://localhost:4200/appointments", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       setAppointments(response.data);
     } catch (error) {
       console.error("Error fetching appointments:", error);
@@ -24,7 +33,16 @@ const Appointments = () => {
 
   const handleStatusUpdate = async (id, newStatus) => {
     try {
-      await axios.patch(`http://localhost:3000/appointments/${id}/status`, { status: newStatus });
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      await axios.patch(`http://localhost:4200/appointments/${id}/status`, { status: newStatus }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       toast.success(`Appointment ${newStatus} successfully`);
       fetchAppointments(); // Refresh the list
     } catch (error) {

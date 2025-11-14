@@ -23,7 +23,16 @@ const Lab = () => {
   const fetchLabTests = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:4200/lab');
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      const response = await axios.get('http://localhost:4200/labs', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       setLabTests(response.data);
     } catch {
       toast.error('Failed to fetch lab tests');
@@ -43,11 +52,24 @@ const Lab = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
       if (editingId) {
-        await axios.patch(`http://localhost:4200/lab/${editingId}`, formData);
+        await axios.patch(`http://localhost:4200/labs/${editingId}`, formData, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         toast.success('Lab test updated successfully');
       } else {
-        await axios.post('http://localhost:4200/lab', formData);
+        await axios.post('http://localhost:4200/labs', formData, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         toast.success('Lab test added successfully');
       }
       setFormData({
@@ -74,7 +96,16 @@ const Lab = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this lab test?')) return;
     try {
-      await axios.delete(`http://localhost:4200/lab/${id}`);
+      const token = localStorage.getItem("token");
+      if (!token) {
+        throw new Error("No token found");
+      }
+
+      await axios.delete(`http://localhost:4200/labs/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       toast.success('Lab test deleted successfully');
       fetchLabTests();
     } catch {

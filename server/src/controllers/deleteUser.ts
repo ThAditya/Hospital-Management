@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import User from "../models/Users";
+import jwt from "jsonwebtoken";
+import { SECRET_KEY } from "./jsonWebToken-Config";
 
 const deleteUserController = async (
   req: Request,
@@ -8,7 +10,24 @@ const deleteUserController = async (
   console.log("Request Body:", req.body);
 
   try {
+    const token = req.headers.authorization?.split(' ')[1];
+    if (!token) {
+      res.status(401).json({ message: "Authentication required" });
+      return;
+    }
+
     const { email } = req.body as { email: string };
+
+    try {
+      const decoded = jwt.verify(token, SECRET_KEY) as any;
+      if (decoded.email !== email) {
+        res.status(403).json({ message: "Forbidden" });
+        return;
+      }
+    } catch (error) {
+      res.status(401).json({ message: "Invalid token" });
+      return;
+    }
 
     console.log("Email:", email);
 

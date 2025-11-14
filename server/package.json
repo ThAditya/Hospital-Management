@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/app-server.js",
   "scripts": {
     "start": "cd src && nodemon app-server.ts",
     "fresh": "cls && npm start",

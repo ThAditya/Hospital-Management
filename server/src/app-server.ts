@@ -46,8 +46,8 @@ mongoose
     process.exit(1); // Exit if connection fails
   });
 
-app.listen(serverPort, () => {
-  console.log(
-    `🚀 Server Running On Port ${serverPort} | Local - http://localhost:${serverPort}`
-  );
-});
+// app.listen(serverPort, () => {
+//   console.log(
+//     `🚀 Server Running On Port ${serverPort} | Local - http://localhost:${serverPort}`
+//   );
+// });

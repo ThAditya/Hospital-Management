@@ -1,0 +1,24 @@
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import User from '../models/Users.js';
+import { SECRET_KEY } from './jsonWebToken-Config.js';
+const patientSignupController = async (req, res, next) => {
+    try {
+        const { firstName, lastName, email, mobNumber, nic: NIC, DOB: dob, gender, password, address } = req.body;
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            res.status(400).json({ message: "User already exists" });
+            return;
+        }
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUser = new User({ firstName, lastName, email, mobNumber: parseInt(mobNumber), NIC, dob: new Date(dob), gender, address, password: hashedPassword });
+        await newUser.save();
+        console.log(newUser);
+        const token = jwt.sign({ email }, SECRET_KEY);
+        res.status(201).json({ token });
+    }
+    catch (error) {
+        next(error);
+    }
+};
+export default patientSignupController;

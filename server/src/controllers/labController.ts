@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import Lab from "../models/Lab";
+import Lab from "../models/Lab.js";
 
 // Create new lab test
 export const createLabTest = async (req: Request, res: Response, next: NextFunction): Promise<void> => {

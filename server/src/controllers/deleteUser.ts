@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import User from "../models/Users";
+import User from "../models/Users.js";
 import jwt from "jsonwebtoken";
-import { SECRET_KEY } from "./jsonWebToken-Config";
+import { SECRET_KEY } from "./jsonWebToken-Config.js";
 
 const deleteUserController = async (
   req: Request,

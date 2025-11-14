@@ -1,8 +1,8 @@
 import express, { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import { SECRET_KEY } from "./jsonWebToken-Config";
-import Treatment from "../models/Treatment"; // Import model
-import { createNotification } from "./notificationController";
+import { SECRET_KEY } from "./jsonWebToken-Config.js";
+import Treatment from "../models/Treatment.js";
+import { createNotification } from "./notificationController.js";
 
 // ---------------- CREATE Treatment ----------------
 export const createTreatment = async (req: Request, res: Response, next: NextFunction): Promise<void> => {

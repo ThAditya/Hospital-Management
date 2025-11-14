@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
-import Appointment from "../models/Appointment";
+import Appointment from "../models/Appointment.js";
 import jwt from "jsonwebtoken";
-import { SECRET_KEY } from "./jsonWebToken-Config";
+import { SECRET_KEY } from "./jsonWebToken-Config.js";
 
 // Create a new appointment (patient booking)
 export const createAppointment = async (req: Request, res: Response, next: NextFunction): Promise<void> => {

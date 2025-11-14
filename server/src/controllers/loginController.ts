@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import User from "../models/Users";
-import Doctor from "../models/Doctor";
-import Admin from "../models/Admin"
-import { SECRET_KEY } from "./jsonWebToken-Config";
+import User from "../models/Users.js";
+import Doctor from "../models/Doctor.js";
+import Admin from "../models/Admin.js"
+import { SECRET_KEY } from "./jsonWebToken-Config.js";
 
 const loginController = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {

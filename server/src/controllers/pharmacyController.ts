@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import Pharmacy from "../models/Pharmacy";
-import { createNotificationForAdmins } from "./notificationController";
+import Pharmacy from "../models/Pharmacy.js";
+import { createNotificationForAdmins } from "./notificationController.js";
 
 // Create new medicine
 export const createMedicine = async (req: Request, res: Response, next: NextFunction): Promise<void> => {

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import { SECRET_KEY } from "./jsonWebToken-Config";
+import { SECRET_KEY } from "./jsonWebToken-Config.js";
 
 const getCurrentUserController = async (req: Request, res: Response): Promise<void> => {
   try {

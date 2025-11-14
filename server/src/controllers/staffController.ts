@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import Staff from "../models/Staff";
+import Staff from "../models/Staff.js";
 import bcrypt from "bcryptjs";
 
 // Create new staff member

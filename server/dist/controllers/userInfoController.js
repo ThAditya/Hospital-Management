@@ -1,0 +1,33 @@
+import User from "../models/Users.js";
+//sends user info to the frontend using the email
+const userInfoController = async (req, res) => {
+    try {
+        const { email } = req.body; // Email sent in request body
+        if (!email) {
+            res.status(400).json({ message: "Email is required" });
+            return;
+        }
+        const user = await User.findOne({ email }).select("-password"); // Exclude password
+        if (!user) {
+            res.status(404).json({ message: "User not found" });
+            return;
+        }
+        res.json(user);
+    }
+    catch (error) {
+        console.error("Error fetching user:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
+// Get all patients
+const getAllPatients = async (req, res) => {
+    try {
+        const patients = await User.find({ role: "patient" }).select("-password");
+        res.status(200).json(patients);
+    }
+    catch (error) {
+        console.error("Error fetching patients:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
+export { userInfoController as default, getAllPatients };

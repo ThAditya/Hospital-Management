@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import { SECRET_KEY } from './jsonWebToken-Config';
-import User from '../models/Users';
-import Doctor from '../models/Doctor';
-import Admin from '../models/Admin';
+import { SECRET_KEY } from './jsonWebToken-Config.js';
+import User from '../models/Users.js';
+import Doctor from '../models/Doctor.js';
+import Admin from '../models/Admin.js';
 
 interface JwtPayload {
   id: string;

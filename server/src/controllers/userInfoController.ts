@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import User from "../models/Users";
+import User from "../models/Users.js";
 //sends user info to the frontend using the email
 const userInfoController = async (req: Request, res: Response): Promise<void> => {
   try {

@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import User, { IDoctor } from "../models/Doctor";
-import { SECRET_KEY } from "./jsonWebToken-Config";
+import User, { IDoctor } from "../models/Doctor.js";
+import { SECRET_KEY } from "./jsonWebToken-Config.js";
 
 const signupController = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {

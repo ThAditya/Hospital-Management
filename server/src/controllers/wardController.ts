@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import Ward from "../models/Ward";
-import { createNotificationForAdmins } from "./notificationController";
+import Ward from "../models/Ward.js";
+import { createNotificationForAdmins } from "./notificationController.js";
 
 // Create new ward
 export const createWard = async (req: Request, res: Response, next: NextFunction): Promise<void> => {

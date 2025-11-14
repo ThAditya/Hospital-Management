@@ -1,5 +1,5 @@
 import express, { Request, Response, NextFunction } from "express";
-import Notification from "../models/Notification";
+import Notification from "../models/Notification.js";
 
 const router = express.Router();
 
@@ -67,7 +67,7 @@ export const createNotificationForAdmins = async (
   relatedId?: string
 ) => {
   try {
-    const Admin = require("../models/Admin").default;
+    const Admin = (await import("../models/Admin.js")).default;
     const admins = await Admin.find({});
     const notifications = [];
     for (const admin of admins) {

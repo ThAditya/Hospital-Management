@@ -6,7 +6,7 @@ import Staff from './staff/Staff';
 import Lab from './lab/Lab';
 import Pharmacy from './pharmacy/Pharmacy';
 import PatientDetails from './PatientDetails/PatientDetails';
-import Ward from './ward/Ward';
+import Ward from './ward/ward.jsx';
 import Treatments from './AdminTreatments';
 
 const AdminDashboard = () => {

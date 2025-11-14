@@ -22,7 +22,7 @@ import LogIn from './components/Register/LogIn/LogIn';
 const App = () => {
   const location = useLocation();
 
-  const noFooterRoutes = ['/Register', '/Register/Admin', '/Register/Patient', '/Register/Doctor','/Login', '/LogIn/Admin', '/LogIn/Doctor', '/LogIn/Patient',];
+  const noFooterRoutes = ['/Register', '/Register/Admin', '/Register/Patient', '/Register/Doctor','/login', '/LogIn/Admin', '/LogIn/Doctor', '/LogIn/Patient',];
 
   const shouldShowFooter = !noFooterRoutes.includes(location.pathname);
 

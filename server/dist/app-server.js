@@ -4,6 +4,7 @@ import path from "path";
 import cors from "cors";
 import bodyParser from "body-parser";
 import router from "./app-router.js";
+import { serverPort } from "./serversettings.js";
 import dotenv from "dotenv";
 dotenv.config(); // Load environment variables
 const __dirname = path.resolve();
@@ -38,8 +39,6 @@ mongoose
     console.error("❌ Error connecting to MongoDB Atlas:", error);
     process.exit(1); // Exit if connection fails
 });
-// app.listen(serverPort, () => {
-//   console.log(
-//     `🚀 Server Running On Port ${serverPort} | Local - http://localhost:${serverPort}`
-//   );
-// });
+app.listen(serverPort, () => {
+    console.log(`🚀 Server Running On Port ${serverPort} | Local - http://localhost:${serverPort}`);
+});

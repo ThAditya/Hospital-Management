@@ -17,7 +17,7 @@ const Appointments = () => {
         throw new Error("No token found");
       }
 
-      const response = await axios.get("http://localhost:4200/appointments", {
+      const response = await axios.get("http://localhost:4200/api/appointments", {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -38,7 +38,7 @@ const Appointments = () => {
         throw new Error("No token found");
       }
 
-      await axios.patch(`http://localhost:4200/appointments/${id}/status`, { status: newStatus }, {
+      await axios.patch(`http://localhost:4200/api/appointments/${id}/status`, { status: newStatus }, {
         headers: {
           Authorization: `Bearer ${token}`
         }

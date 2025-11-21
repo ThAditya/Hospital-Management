@@ -40,6 +40,7 @@ import {
 
 import notificationController from "./controllers/notificationController.js";
 import profileController from "./controllers/profileController.js";
+import { getDashboardStats } from "./controllers/adminController.js";
 
 import {
   createStaff,

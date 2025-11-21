@@ -13,7 +13,7 @@ const DoctorDetails = () => {
         throw new Error("No token found");
       }
 
-      const response = await axios.get('http://localhost:4200/doctors', {
+      const response = await axios.get('http://localhost:4200/api/doctors', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/app-server.js",
-    "dev": "cd src && nodemon app-server.ts",
+    "dev": "cd src && nodemon --exec \"ts-node --esm\" app-server.ts",
     "fresh": "cls && npm run dev",
     "setup": "npm i && npm fund && cls && npm run dev",
     "client": " cd .. && cd Frontend && npm run dev"

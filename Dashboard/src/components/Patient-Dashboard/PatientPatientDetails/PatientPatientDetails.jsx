@@ -44,7 +44,7 @@ const PatientPatientDetails = () => {
       const patientId = decodedToken.id;
 
       const response = await axios.get(
-        `http://localhost:4200/treatments/patient/${patientId}`,
+        `http://localhost:4200/api/treatments/patient/${patientId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`

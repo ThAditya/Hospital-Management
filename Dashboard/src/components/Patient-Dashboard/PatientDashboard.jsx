@@ -8,6 +8,7 @@ import PatientTreatment from "./PatientTreatment/PatientTreatment";
 import PatientWard from "./PatientWard/PatientWard";
 import PatientPatientDetails from "./PatientPatientDetails/PatientPatientDetails";
 import PatientBookings from "./PatientBookings/PatientBookings";
+import PatientDashboardHome from "./PatientDashboardHome";
 
 const PatientDashboard = () => {
   return (
@@ -15,37 +16,10 @@ const PatientDashboard = () => {
       <Patient_Sidebar />
       <main className="flex-1 overflow-auto p-6 bg-gradient-to-br from-blue-50 to-indigo-100">
         <Routes>
-          {/* <Route path="/" element={
-            <div>
-              <h2 className="text-3xl font-bold mb-6 text-gray-800">Patient Dashboard</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div className="bg-white shadow-lg rounded-2xl p-6 hover:shadow-xl transition-shadow duration-300">
-                  <h3 className="font-semibold mb-4 text-gray-700">Patient Details</h3>
-                  <PatientPatientDetails />
-                </div>
-                <div className="bg-white shadow-lg rounded-2xl p-6 hover:shadow-xl transition-shadow duration-300">
-                  <h3 className="font-semibold mb-4 text-gray-700">Treatments</h3>
-                  <PatientTreatment />
-                </div>
-                <div className="bg-white shadow-lg rounded-2xl p-6 hover:shadow-xl transition-shadow duration-300">
-                  <h3 className="font-semibold mb-4 text-gray-700">Lab Reports</h3>
-                  <PatientLab />
-                </div>
-                <div className="bg-white shadow-lg rounded-2xl p-6 hover:shadow-xl transition-shadow duration-300">
-                  <h3 className="font-semibold mb-4 text-gray-700">Pharmacy</h3>
-                  <PatientPharmacy />
-                </div>
-                <div className="bg-white shadow-lg rounded-2xl p-6 hover:shadow-xl transition-shadow duration-300">
-                  <h3 className="font-semibold mb-4 text-gray-700">Ward Info</h3>
-                  <PatientWard />
-                </div>
-                <div className="bg-white shadow-lg rounded-2xl p-6 hover:shadow-xl transition-shadow duration-300">
-                  <h3 className="font-semibold mb-4 text-gray-700">Staff</h3>
-                  <PatientStaff />
-                </div>
-              </div>
-            </div>
-          } /> */}
+          {/* Default overview when visiting /patient */}
+          <Route index element={<PatientDashboardHome />} />
+
+          {/* Detailed sections */}
           <Route path="Staff" element={<PatientStaff />} />
           <Route path="Treatment" element={<PatientTreatment />} />
           <Route path="Lab" element={<PatientLab />} />

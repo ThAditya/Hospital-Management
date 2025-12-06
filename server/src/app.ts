@@ -22,9 +22,9 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "http://localhost:5000",
-      "http://localhost:5173",
-      "http://localhost:5174",
+      "https://hospital-management-zc8g-kimqukg4r.vercel.app/",
+      "https://hospital-management-zeyp.vercel.app/login",
+      // "https://hospital-management-zc8g-kimqukg4r.vercel.app/",
       "https://76z8d4p6-5000.inc1.devtunnels.ms",
     ], // Added Dashboard port and Frontend tunnel
     credentials: true,

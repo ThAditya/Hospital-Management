@@ -36,7 +36,7 @@ const DoctorPharmacy = () => {
         throw new Error("No token found");
       }
 
-      const response = await axios.get('http://localhost:4200/pharmacy', {
+      const response = await axios.get('https://hospital-management-1-09zh.onrender.com/pharmacy', {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -94,7 +94,7 @@ const DoctorPharmacy = () => {
       if (editingId) {
         // ✅ Make sure backend accepts PATCH (if not, replace with PUT)
         const response = await axios.put(
-          `http://localhost:4200/pharmacy/${editingId}`,
+          `https://hospital-management-1-09zh.onrender.com/pharmacy/${editingId}`,
           payload,
           {
             headers: {
@@ -108,7 +108,7 @@ const DoctorPharmacy = () => {
           toast.warn('Unexpected response while updating');
         }
       } else {
-        await axios.post('http://localhost:4200/pharmacy', payload, {
+        await axios.post('https://hospital-management-1-09zh.onrender.com/pharmacy', payload, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -149,7 +149,7 @@ const DoctorPharmacy = () => {
         throw new Error("No token found");
       }
 
-      await axios.delete(`http://localhost:4200/pharmacy/${id}`, {
+      await axios.delete(`https://hospital-management-1-09zh.onrender.com/pharmacy/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

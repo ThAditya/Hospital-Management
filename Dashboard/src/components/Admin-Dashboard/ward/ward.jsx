@@ -28,7 +28,7 @@ const Ward = () => {
         throw new Error("No token found");
       }
 
-      const response = await axios.get('http://localhost:4200/wards', {
+      const response = await axios.get('https://hospital-management-1-09zh.onrender.com/wards', {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -58,14 +58,14 @@ const Ward = () => {
       }
 
       if (editingId) {
-        await axios.patch(`http://localhost:4200/wards/${editingId}`, formData, {
+        await axios.patch(`https://hospital-management-1-09zh.onrender.com/wards/${editingId}`, formData, {
           headers: {
             Authorization: `Bearer ${token}`
           }
         });
         toast.success('Ward updated successfully');
       } else {
-        await axios.post('http://localhost:4200/wards', formData, {
+        await axios.post('https://hospital-management-1-09zh.onrender.com/wards', formData, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -101,7 +101,7 @@ const Ward = () => {
         throw new Error("No token found");
       }
 
-      await axios.delete(`http://localhost:4200/wards/${id}`, {
+      await axios.delete(`https://hospital-management-1-09zh.onrender.com/wards/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

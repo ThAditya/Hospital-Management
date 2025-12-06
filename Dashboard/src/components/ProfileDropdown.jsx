@@ -45,7 +45,7 @@ const ProfileDropdown = () => {
 
         try {
           // Use the new dedicated profile endpoint
-          const response = await axios.get('http://localhost:4200/api/user/profile', { headers: { Authorization: `Bearer ${token}` }, });
+          const response = await axios.get('https://hospital-management-1-09zh.onrender.com/api/user/profile', { headers: { Authorization: `Bearer ${token}` }, });
 
         setUser(response.data);
         console.log("Fetched user data:", response.data);
@@ -69,7 +69,7 @@ const ProfileDropdown = () => {
 
   const handleLogout = () => {
     localStorage.clear();
-    window.location.href = 'http://localhost:5000/login';  
+    window.location.href = 'https://hospital-management-zc8g-kimqukg4r.vercel.app/login';  
   };
 
   const goTo = (path) => {

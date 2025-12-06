@@ -33,7 +33,7 @@ const Pharmacy = () => {
         throw new Error("No token found");
       }
 
-      const response = await axios.get('http://localhost:4200/pharmacy', {
+      const response = await axios.get('https://hospital-management-1-09zh.onrender.com/pharmacy', {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -63,14 +63,14 @@ const Pharmacy = () => {
       }
 
       if (editingId) {
-        await axios.patch(`http://localhost:4200/pharmacy/${editingId}`, formData, {
+        await axios.patch(`https://hospital-management-1-09zh.onrender.com/pharmacy/${editingId}`, formData, {
           headers: {
             Authorization: `Bearer ${token}`
           }
         });
         toast.success('Medicine updated successfully');
       } else {
-        await axios.post('http://localhost:4200/pharmacy', formData, {
+        await axios.post('https://hospital-management-1-09zh.onrender.com/pharmacy', formData, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -111,7 +111,7 @@ const Pharmacy = () => {
         throw new Error("No token found");
       }
 
-      await axios.delete(`http://localhost:4200/pharmacy/${id}`, {
+      await axios.delete(`https://hospital-management-1-09zh.onrender.com/pharmacy/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

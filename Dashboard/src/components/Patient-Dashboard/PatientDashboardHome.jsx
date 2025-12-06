@@ -27,12 +27,12 @@ const PatientDashboardHome = () => {
         };
 
         const profilePromise = axios.get(
-          "http://localhost:4200/api/user/profile",
+          "https://hospital-management-1-09zh.onrender.com/api/user/profile",
           authHeaders
         );
 
         const appointmentsPromise = axios.get(
-          "http://localhost:4200/api/appointments/my",
+          "https://hospital-management-1-09zh.onrender.com/api/appointments/my",
           authHeaders
         );
 
@@ -42,7 +42,7 @@ const PatientDashboardHome = () => {
           const decodedToken = JSON.parse(atob(token.split(".")[1]));
           const patientId = decodedToken.id;
           treatmentsPromise = axios.get(
-            `http://localhost:4200/treatments/patient/${patientId}`,
+            `https://hospital-management-1-09zh.onrender.com/treatments/patient/${patientId}`,
             authHeaders
           );
         } catch {

@@ -29,7 +29,7 @@ const DoctorStaff = () => {
   const fetchStaff = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:4200/staff');
+      const response = await axios.get('https://hospital-management-1-09zh.onrender.com/staff');
       setStaffList(response.data);
     } catch {
       toast.error('Failed to fetch staff list');
@@ -47,10 +47,10 @@ const DoctorStaff = () => {
     e.preventDefault();
     try {
       if (editingId) {
-        await axios.patch(`http://localhost:4200/staff/${editingId}`, formData);
+        await axios.patch(`https://hospital-management-1-09zh.onrender.com/staff/${editingId}`, formData);
         toast.success('Staff updated successfully');
       } else {
-        await axios.post('http://localhost:4200/staff', formData);
+        await axios.post('https://hospital-management-1-09zh.onrender.com/staff', formData);
         toast.success('Staff added successfully');
       }
       setFormData({
@@ -83,7 +83,7 @@ const DoctorStaff = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this staff member?')) return;
     try {
-      await axios.delete(`http://localhost:4200/staff/${id}`);
+      await axios.delete(`https://hospital-management-1-09zh.onrender.com/staff/${id}`);
       toast.success('Staff deleted successfully');
       fetchStaff();
     } catch {

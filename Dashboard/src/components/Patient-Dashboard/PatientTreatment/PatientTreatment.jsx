@@ -24,7 +24,7 @@ const PatientTreatment = () => {
       const patientId = decodedToken.id;
 
       const response = await axios.get(
-        `http://localhost:4200/api/treatments/patient/${patientId}`,
+        `https://hospital-management-1-09zh.onrender.com/api/treatments/patient/${patientId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`

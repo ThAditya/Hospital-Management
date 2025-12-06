@@ -40,7 +40,7 @@ const DoctorTreatment = () => {
       const token = localStorage.getItem("token");
       if (!token) throw new Error("No token found");
 
-      const response = await axios.get('http://localhost:4200/api/user/profile', {
+      const response = await axios.get('https://hospital-management-1-09zh.onrender.com/api/user/profile', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setDoctorId(response.data._id);
@@ -55,7 +55,7 @@ const DoctorTreatment = () => {
       const token = localStorage.getItem("token");
       if (!token) throw new Error("No token found");
 
-      const response = await axios.get(`http://localhost:4200/api/treatments/doctor/${doctorId}`, {
+      const response = await axios.get(`https://hospital-management-1-09zh.onrender.com/api/treatments/doctor/${doctorId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setTreatments(response.data);
@@ -71,7 +71,7 @@ const DoctorTreatment = () => {
       const token = localStorage.getItem("token");
       if (!token) throw new Error("No token found");
 
-      const response = await axios.get('http://localhost:4200/api/patients', {
+      const response = await axios.get('https://hospital-management-1-09zh.onrender.com/api/patients', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setPatients(response.data);
@@ -99,12 +99,12 @@ const DoctorTreatment = () => {
       };
 
       if (editingId) {
-        await axios.patch(`http://localhost:4200/api/treatments/${editingId}`, treatmentData, {
+        await axios.patch(`https://hospital-management-1-09zh.onrender.com/api/treatments/${editingId}`, treatmentData, {
           headers: { Authorization: `Bearer ${token}` }
         });
         toast.success('Treatment updated successfully');
       } else {
-        await axios.post('http://localhost:4200/api/treatments', treatmentData, {
+        await axios.post('https://hospital-management-1-09zh.onrender.com/api/treatments', treatmentData, {
           headers: { Authorization: `Bearer ${token}` }
         });
         toast.success('Treatment created successfully');
@@ -159,7 +159,7 @@ const DoctorTreatment = () => {
       const token = localStorage.getItem("token");
       if (!token) throw new Error("No token found");
 
-      await axios.delete(`http://localhost:4200/api/treatments/${id}`, {
+      await axios.delete(`https://hospital-management-1-09zh.onrender.com/api/treatments/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success('Treatment deleted successfully');

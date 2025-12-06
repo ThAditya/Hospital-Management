@@ -34,7 +34,7 @@ const Staff = () => {
         throw new Error("No token found");
       }
 
-      const response = await axios.get('http://localhost:4200/staff', {
+      const response = await axios.get('https://hospital-management-1-09zh.onrender.com/staff', {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -61,14 +61,14 @@ const Staff = () => {
       }
 
       if (editingId) {
-        await axios.patch(`http://localhost:4200/staff/${editingId}`, formData, {
+        await axios.patch(`https://hospital-management-1-09zh.onrender.com/staff/${editingId}`, formData, {
           headers: {
             Authorization: `Bearer ${token}`
           }
         });
         toast.success('Staff updated successfully');
       } else {
-        await axios.post('http://localhost:4200/staff', formData, {
+        await axios.post('https://hospital-management-1-09zh.onrender.com/staff', formData, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -110,7 +110,7 @@ const Staff = () => {
         throw new Error("No token found");
       }
 
-      await axios.delete(`http://localhost:4200/staff/${id}`, {
+      await axios.delete(`https://hospital-management-1-09zh.onrender.com/staff/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

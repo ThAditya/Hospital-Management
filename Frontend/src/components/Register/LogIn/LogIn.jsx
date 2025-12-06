@@ -12,7 +12,7 @@ const LogIn = () => {
     console.log("Login attempt started");
 
     try {
-      const response = await axios.post("http://localhost:4200/api/login", {
+      const response = await axios.post("https://hospital-management-1-09zh.onrender.com/api/login", {
         email,
         password
       });
@@ -28,13 +28,13 @@ const LogIn = () => {
       const encodedToken = encodeURIComponent(token);
       const encodedRole = encodeURIComponent(role);
       if (role === "admin") {
-        window.location.href=`http://localhost:5173/Admin?token=${encodedToken}&role=${encodedRole}`;
+        window.location.href=`https://hospital-management-zeyp.vercel.app/loginAdmin?token=${encodedToken}&role=${encodedRole}`;
       }
        else if (role === "doctor") {
-        window.location.href=`http://localhost:5173/doctor?token=${encodedToken}&role=${encodedRole}`;
+        window.location.href=`https://hospital-management-zeyp.vercel.app/logindoctor?token=${encodedToken}&role=${encodedRole}`;
       }
        else if (role === "patient") {
-        window.location.href=`http://localhost:5173/patient?token=${encodedToken}&role=${encodedRole}`;
+        window.location.href=`https://hospital-management-zeyp.vercel.app/loginpatient?token=${encodedToken}&role=${encodedRole}`;
       }
       else {
         alert("Unknown role, access denied.");

@@ -17,7 +17,7 @@ const AdminTreatment = () => {
   const fetchAllTreatments = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:4200/treatments");
+      const response = await axios.get("https://hospital-management-1-09zh.onrender.com/treatments");
       setTreatments(response.data);
       setFiltered(response.data);
     // eslint-disable-next-line no-unused-vars
@@ -32,7 +32,7 @@ const AdminTreatment = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this treatment?")) return;
     try {
-      await axios.delete(`http://localhost:4200/treatments/${id}`);
+      await axios.delete(`https://hospital-management-1-09zh.onrender.com/treatments/${id}`);
       toast.success("Treatment deleted successfully");
       fetchAllTreatments();
     // eslint-disable-next-line no-unused-vars

@@ -85,7 +85,7 @@ const Doctor = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await axios.post('http://localhost:4200/api/signup', formData, {
+      const response = await axios.post('https://hospital-management-1-09zh.onrender.com/api/signup', formData, {
         headers: {
           'Content-Type': 'application/json'
         },

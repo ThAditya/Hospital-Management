@@ -13,7 +13,7 @@ const PatientWard = () => {
   const fetchWards = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:4200/ward');
+      const response = await axios.get('https://hospital-management-1-09zh.onrender.com/ward');
       setWards(response.data);
     } catch {
       toast.error('Failed to fetch wards');

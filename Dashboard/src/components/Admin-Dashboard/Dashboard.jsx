@@ -30,7 +30,7 @@ const Dashboard = () => {
         throw new Error("No token found");
       }
 
-      const response = await axios.get("http://localhost:4200/api/dashboard-stats", {
+      const response = await axios.get("https://hospital-management-1-09zh.onrender.com/api/dashboard-stats", {
         headers: {
           Authorization: `Bearer ${token}`
         }

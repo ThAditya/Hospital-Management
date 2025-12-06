@@ -19,7 +19,7 @@ const Notifications = () => {
 
   const fetchNotifications = async () => {
     try {
-      const response = await axios.get(`http://localhost:4200/api/notifications/${userId}`);
+      const response = await axios.get(`https://hospital-management-1-09zh.onrender.com/api/notifications/${userId}`);
       setNotifications(response.data);
       setUnreadCount(response.data.filter(n => !n.isRead).length);
     } catch (error) {
@@ -29,7 +29,7 @@ const Notifications = () => {
 
   const markAsRead = async (id) => {
     try {
-      await axios.patch(`http://localhost:4200/api/notifications/${id}/read`);
+      await axios.patch(`https://hospital-management-1-09zh.onrender.com/api/notifications/${id}/read`);
       fetchNotifications(); // Refresh
     } catch (error) {
       console.error('Error marking as read:', error);

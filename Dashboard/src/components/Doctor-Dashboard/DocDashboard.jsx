@@ -27,10 +27,10 @@ const DocDashboard = () => {
       // Replace with actual API endpoints for doctor dashboard stats
       // TODO: You'll need to get the logged-in doctor's ID to fetch specific data.
       const [patientsRes, wardsRes, labsRes, appointmentsRes] = await Promise.all([
-        axios.get("http://localhost:4200/api/patients", { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get("http://localhost:4200/api/wards", { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get("http://localhost:4200/api/labs", { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get("http://localhost:4200/api/appointments", { headers: { Authorization: `Bearer ${token}` } }), // This gets all appointments, consider fetching only for the current doctor
+        axios.get("https://hospital-management-1-09zh.onrender.com/api/patients", { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get("https://hospital-management-1-09zh.onrender.com/api/wards", { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get("https://hospital-management-1-09zh.onrender.com/api/labs", { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get("https://hospital-management-1-09zh.onrender.com/api/appointments", { headers: { Authorization: `Bearer ${token}` } }), // This gets all appointments, consider fetching only for the current doctor
       ]);
 
       setStats({

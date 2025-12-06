@@ -18,7 +18,7 @@ const PatientBookings = () => {
         toast.error('No authentication token found');
         return;
       }
-      const response = await axios.get('http://localhost:4200/api/appointments/my', {
+      const response = await axios.get('https://hospital-management-1-09zh.onrender.com/api/appointments/my', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAppointments(response.data);

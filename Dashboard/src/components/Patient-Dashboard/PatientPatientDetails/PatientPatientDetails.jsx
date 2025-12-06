@@ -21,7 +21,7 @@ const PatientPatientDetails = () => {
         toast.error('No authentication token found');
         return;
       }
-      const response = await axios.get('http://localhost:4200/api/user/profile', {
+      const response = await axios.get('https://hospital-management-1-09zh.onrender.com/api/user/profile', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setPatient(response.data);
@@ -44,7 +44,7 @@ const PatientPatientDetails = () => {
       const patientId = decodedToken.id;
 
       const response = await axios.get(
-        `http://localhost:4200/api/treatments/patient/${patientId}`,
+        `https://hospital-management-1-09zh.onrender.com/api/treatments/patient/${patientId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`

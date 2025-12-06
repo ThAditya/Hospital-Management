@@ -18,7 +18,7 @@ const PatientDetails = () => {
         throw new Error("No token found");
       }
 
-      const response = await axios.get('http://localhost:4200/patients', {
+      const response = await axios.get('https://hospital-management-1-09zh.onrender.com/patients', {
         headers: {
           Authorization: `Bearer ${token}`
         }
